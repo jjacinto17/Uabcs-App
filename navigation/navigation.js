@@ -13,42 +13,67 @@ const Tab = createBottomTabNavigator();
 export function HomeScreen() {
     return (
         <Tab.Navigator
-            screenOptions={({ route }) => ({
-                tabBarShowLabel: false,
-                tabBarIcon: ({ color, size }) => {
-                    let iconName;
+            screenOptions={
 
-                    switch (route.name) {
-                        case 'Notificaciones':
-                            iconName = 'bell';
-                            break;
-                        case 'Informacion':
-                            iconName = 'pencil';
-                            break;
-                        case 'Calendario':
-                            iconName = 'calendar';
-                            break;
-                        case 'Mapa':
-                            iconName = 'map-pin';
-                            break;
-                        case 'Kardex':
-                            iconName = 'file-text-o';
-                            break;
-                        default:
-                            iconName = 'circle';
-                            break;
-                    }
+                ({ route }) => ({
+                    tabBarShowLabel: false,
+                    tabBarIcon: ({ color, size }) => {
+                        let iconName;
 
-                    return <Icon name={iconName} color={color} size={30} />;
-                },
-                tabBarItemStyle: { height: 80, justifyContent: 'center' },
-                tabBarIconStyle: { height: 60, width: 60 },
-                tabBarStyle: { height: 80 },
-            })}
+                        switch (route.name) {
+                            case 'Notificaciones':
+                                iconName = 'bell';
+                                break;
+                            case 'Informacion':
+                                iconName = 'pencil';
+                                break;
+                            case 'Calendario':
+                                iconName = 'calendar';
+                                break;
+                            case 'Mapa':
+                                iconName = 'map-pin';
+                                break;
+                            case 'Kardex':
+                                iconName = 'file-text-o';
+                                break;
+                            default:
+                                iconName = 'circle';
+                                break;
+                        }
+
+                        return <Icon name={iconName} color={color} size={30} />;
+                    },
+                    headerTitleContainerStyle: {
+                        justifyContent: 'center',
+                    },
+                    tabBarItemStyle: { height: 80, justifyContent: 'center' },
+                    tabBarIconStyle: { height: 60, width: 60 },
+                    tabBarStyle: { height: 80 },
+                    headerStyle: {
+                        backgroundColor: '#0C1A61',
+
+                    },
+                    headerTintColor: "#eeee",
+                    headerRight: () => (
+                        <Icon
+                            name="ellipsis-v"
+                            size={24}
+                            color="#ffffff"
+                            style={{ marginRight: 15 }}
+                            onPress={() => {
+                                console.info('Más información');
+                            }}
+                        />
+                    ),
+
+                }
+                )
+            }
         >
             <Tab.Screen
                 name="Notificaciones"
                 component={NotificationsScreen}
+
             />
             <Tab.Screen
                 name="Informacion"
@@ -65,20 +90,9 @@ export function HomeScreen() {
             <Tab.Screen
                 name="Kardex"
                 component={KardexScreen}
+
             />
         </Tab.Navigator>
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        backgroundColor: '#f0f0f0',
-    },
-    text: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-});

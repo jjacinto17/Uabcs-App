@@ -18,7 +18,9 @@ const GradeCard = ({ semester, subject, teacher, grade }) => {
                         <Text style={styles.teacher}>{teacher}</Text>
                     </View>
                     <View style={styles.rightContainer}>
-                        <Text style={styles.grade}>{grade}</Text>
+                        <View style={[styles.gradeCircle, { backgroundColor: getGradeColor(grade) }]}>
+                            <Text style={styles.grade}>{grade}</Text>
+                        </View>
                     </View>
                 </View>
             </TouchableOpacity>
@@ -40,7 +42,6 @@ const GradeCard = ({ semester, subject, teacher, grade }) => {
                                 <Text style={styles.gradeText}>{grade}</Text>
                             </View>
                         </View>
-
                     </View>
                     <TouchableOpacity onPress={closeModal} style={styles.closeButton}>
                         <Text style={styles.closeButtonText}>Cerrar</Text>
@@ -54,11 +55,11 @@ const GradeCard = ({ semester, subject, teacher, grade }) => {
 const getGradeColor = (grade) => {
     const numericGrade = parseFloat(grade);
     if (numericGrade >= 9.0) {
-        return '#2ecc71'; 
+        return '#2ecc71';
     } else if (numericGrade >= 7.0) {
-        return '#f39c12'; 
+        return '#f39c12';
     } else {
-        return '#e74c3c'; 
+        return '#e74c3c';
     }
 };
 
@@ -84,29 +85,27 @@ export const Card = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'center',
         backgroundColor: '#f0f0f0',
-        paddingTop: 20,
         paddingHorizontal: 10,
     },
     scrollView: {
+        flex: 1,
         width: '100%',
     },
     card: {
         flexDirection: 'row',
         alignItems: 'center',
         width: '100%',
-        backgroundColor: '#0C1A61',
+        backgroundColor: 'rgb(222,222,222)',
         borderRadius: 21,
         padding: 15,
         marginBottom: 10,
     },
     leftContainer: {
-        width: '20%',
+        width: '12%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#1E3AA6',
+        backgroundColor: 'rgb(42,128,207)',
         borderRadius: 10,
         padding: 10,
         marginRight: 10,
@@ -118,21 +117,29 @@ const styles = StyleSheet.create({
     },
     centerContainer: {
         width: '60%',
-        paddingLeft: 10,
+        paddingLeft: 15,
     },
     subject: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#fff',
+        color: 'rgb(23,26,32)',
     },
     teacher: {
         fontSize: 16,
-        color: '#ddd',
+        color: 'rgb(23,26,32)',
     },
     rightContainer: {
         width: '20%',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+    },
+    gradeCircle: {
+        width: 50,
+        height: 50,
+        borderRadius: 25,
         justifyContent: 'center',
         alignItems: 'center',
+
     },
     grade: {
         fontSize: 22,
@@ -160,6 +167,7 @@ const styles = StyleSheet.create({
     rightContent: {
         justifyContent: 'flex-start',
         alignItems: 'flex-end',
+
     },
     modalTitle: {
         fontSize: 24,
@@ -181,9 +189,10 @@ const styles = StyleSheet.create({
     gradeText: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#fff',
+        color: '#0C1A61',
     },
     closeButton: {
+        alignSelf: 'center',
         marginTop: 15,
         paddingVertical: 10,
         paddingHorizontal: 20,
@@ -196,5 +205,3 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
-
-

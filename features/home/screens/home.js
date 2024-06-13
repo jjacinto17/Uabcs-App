@@ -4,6 +4,7 @@ import { Card } from '../components/kardexCard';
 import { StyleSheet } from "react-native";
 import { View, Text } from "react-native";
 import { MapScreen } from "../components/mapComponent"
+import { Image } from "react-native";
 
 export function NotificationsScreen() {
     return (
@@ -20,6 +21,7 @@ export function InfoScreen() {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>infos</Text>
+            <TextContainer />
         </View>
     );
 }
@@ -28,6 +30,12 @@ export function CalendarScreen() {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>calendario</Text>
+            <Image
+                source={require('../../../assets/logo_uabcs.png')}
+                style={styles.logo}
+                resizeMode="stretch"
+
+            />
         </View>
     );
 }
@@ -56,6 +64,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         backgroundColor: '#f0f0f0',
+
     },
     text: {
         fontSize: 20,

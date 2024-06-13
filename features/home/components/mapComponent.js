@@ -14,11 +14,10 @@ export const MapScreen = () => {
                     longitudeDelta: 0.0421,
                 }}
             >
-
                 <Marker
                     coordinate={{ latitude: 37.78825, longitude: -122.4324 }}
                     title="Ubicación"
-                    description="Descripción de la ubicación"
+                    description="Universidad Autonoma de Baja California Sur"
                 />
             </MapView>
         </View>
@@ -30,6 +29,7 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFillObject,
         justifyContent: 'flex-end',
         alignItems: 'center',
+        height: "87%"
     },
     map: {
         ...StyleSheet.absoluteFillObject,

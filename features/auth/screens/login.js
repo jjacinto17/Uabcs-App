@@ -47,9 +47,7 @@ export function LoginScreen({ navigation }) {
                 </Pressable>
             </View>
 
-            <Text style={styles.noAccountText}>
-                No tienes una cuenta?
-            </Text>
+
         </View>
     );
 }
@@ -63,7 +61,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     imageContainer: {
-        marginBottom: 30,
+        top: "-5%",
+        marginBottom: 40,
     },
     logo: {
         width: 300,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Animated } from 'react-native';
 
 export const LegendView = () => {
   return (
@@ -31,12 +31,11 @@ export const LegendView = () => {
 const styles = StyleSheet.create({
   container: {
     top: "1%",
-    flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
+    paddingRight: "10%",
     backgroundColor: '#f0f0f0',
-    borderStyle: 'solid',
-    borderColor: '#f0f0f0',
+    height: "10%"
 
   },
 
@@ -56,9 +55,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   circle: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#100000',
   },
   approved: {
-    backgroundColor: '#00F000',
+    backgroundColor: 'rgb(19,133,53)',
   },
   number: {
     color: '#FFFFFF',
@@ -77,5 +76,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
-
