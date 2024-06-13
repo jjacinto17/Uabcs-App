@@ -1,0 +1,43 @@
+├── assets/              # Recursos estáticos como imágenes, fuentes, etc.
+├── components/          # Componentes reutilizables
+│   ├── Button/
+│   ├── Input/
+│   ├── Header/
+│   └── .../
+├── features/            # Funcionalidades principales de la app
+│   ├── Authentication/
+│   │   ├── components/  # Componentes específicos de autenticación
+│   │   ├── screens/     # Pantallas de autenticación (Login, Register)
+│   │   ├── services/    # Servicios relacionados (API calls)
+│   │   └── styles/      # Estilos específicos de autenticación
+│   ├── Dashboard/
+│   │   ├── components/
+│   │   ├── screens/
+│   │   ├── services/
+│   │   └── styles/
+│   ├── Courses/
+│   │   ├── components/
+│   │   ├── screens/
+│   │   ├── services/
+│   │   └── styles/
+│   └── .../
+├── navigation/          # Configuración de navegación (React Navigation)
+│   ├── AppNavigator.js
+│   └── AuthNavigator.js
+├── hooks/               # Hooks personalizados
+│   ├── useAuth.js
+│   └── useFetch.js
+├── contexts/            # Contextos para manejar estados globales
+│   ├── AuthContext.js
+│   └── ThemeContext.js
+├── services/            # Servicios globales (API, configuración)
+│   ├── api.js
+│   ├── authService.js
+│   └── .../
+├── utils/               # Utilidades y funciones auxiliares
+│   ├── validation.js
+│   └── .../
+├── App.js               # Componente raíz de la aplicación
+├── app.json             # Configuración de Expo
+├── package.json         # Dependencias y scripts de npm
+└── README.md            # Documentación del proyecto
