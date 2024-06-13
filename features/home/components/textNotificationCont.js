@@ -7,7 +7,6 @@ export const TextContainer = () => {
             <Image
                 source={require("../../../assets/logo_uabcs.png")}
                 style={styles.image}
-
             />
             <View style={styles.textContainer}>
                 <Text style={styles.date}>12/06/2024</Text>

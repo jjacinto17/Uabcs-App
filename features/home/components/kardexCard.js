@@ -54,11 +54,11 @@ const GradeCard = ({ semester, subject, teacher, grade }) => {
 const getGradeColor = (grade) => {
     const numericGrade = parseFloat(grade);
     if (numericGrade >= 9.0) {
-        return '#2ecc71'; // Verde para calificaciones altas
+        return '#2ecc71'; 
     } else if (numericGrade >= 7.0) {
-        return '#f39c12'; // Naranja para calificaciones medias
+        return '#f39c12'; 
     } else {
-        return '#e74c3c'; // Rojo para calificaciones bajas
+        return '#e74c3c'; 
     }
 };
 

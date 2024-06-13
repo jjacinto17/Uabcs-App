@@ -14,10 +14,10 @@ export function LoginScreen({ navigation }) {
             </View>
 
             <View style={styles.inputContainer}>
-                <Text style={styles.text}>Ingresar usuario:</Text>
+                <Text style={styles.text}>Identificador:</Text>
                 <TextInput
                     style={styles.input}
-                    placeholder='Ingrese su usuario'
+                    placeholder='alu_20'
                 />
 
                 <Text style={styles.text}>Contraseña:</Text>

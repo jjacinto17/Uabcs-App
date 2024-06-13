@@ -30,22 +30,22 @@ export const LegendView = () => {
 
 const styles = StyleSheet.create({
   container: {
-    top:"1%",
+    top: "1%",
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#f0f0f0',
-    borderStyle:'solid',
-    borderColor:'#f0f0f0',
-    
+    borderStyle: 'solid',
+    borderColor: '#f0f0f0',
+
   },
 
   legendContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
-    borderColor:"#0C1A61",
-    
+    borderColor: "#0C1A61",
+
   },
   legend: {
     alignItems: 'center',
@@ -63,13 +63,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   notApproved: {
-    backgroundColor: '#FF0000', 
+    backgroundColor: '#FF0000',
   },
   general: {
-    backgroundColor: '#100000', 
+    backgroundColor: '#100000',
   },
   approved: {
-    backgroundColor: '#00F000', 
+    backgroundColor: '#00F000',
   },
   number: {
     color: '#FFFFFF',
