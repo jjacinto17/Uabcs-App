@@ -1,11 +1,14 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { InfoScreen, UniMapScreen, NotificationsScreen, KardexScreen, CalendarScreen } from '../features/home/screens/home';
 
 const Tab = createBottomTabNavigator();
 const { width, height } = Dimensions.get('window');
+
+const formatTitle = (routeName) => {
+};
 
 export function HomeScreen() {
     return (
@@ -14,7 +17,6 @@ export function HomeScreen() {
                 tabBarShowLabel: false,
                 tabBarIcon: ({ color, size }) => {
                     let iconName;
-
                     switch (route.name) {
                         case 'Notificaciones':
                             iconName = 'bell';
@@ -55,7 +57,7 @@ export function HomeScreen() {
                     backgroundColor: '#0C1A61',
                 },
                 headerTintColor: "#fff",
-                
+                headerTitle: formatTitle(route.name),
             })}
         >
             <Tab.Screen
@@ -81,3 +83,4 @@ export function HomeScreen() {
         </Tab.Navigator>
     );
 }
+

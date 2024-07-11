@@ -14,10 +14,10 @@ const { width, height } = Dimensions.get("window");
 
 const GradeCard = ({ semester, subject, teacher, grade }) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const navigation = useNavigation(); // Obtiene la navegación
+  const navigation = useNavigation(); 
 
   const handleSemesterPress = () => {
-    navigation.navigate("SemesterScreen", { semester }); // Navega a SemesterScreen con el semestre seleccionado
+    navigation.navigate("SemesterScreen", { subject });
   };
 
   /*const closeModal = () => setModalVisible(false);

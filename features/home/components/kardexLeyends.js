@@ -22,7 +22,7 @@ export const LegendView = () => {
         <View style={styles.legend}>
           <Text style={styles.legendText}>General</Text>
           <View style={[styles.circle, styles.general]}>
-            <Text style={styles.number}>10</Text>
+            <Text style={styles.number}>80.6</Text>
           </View>
         </View>
       </View>

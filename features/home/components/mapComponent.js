@@ -14,10 +14,10 @@ export const MapScreen = () => {
   };
 
   // Límites del área permitida (ejemplo)
-  const minLatitude = initialRegion.latitude - 0.02;
-  const maxLatitude = initialRegion.latitude + 0.02;
-  const minLongitude = initialRegion.longitude - 0.02;
-  const maxLongitude = initialRegion.longitude + 0.02;
+  const minLatitude = initialRegion.latitude - 0.01;
+  const maxLatitude = initialRegion.latitude + 0.01;
+  const minLongitude = initialRegion.longitude - 0.01;
+  const maxLongitude = initialRegion.longitude + 0.01;
 
   const handleRegionChange = (newRegion) => {
     if (

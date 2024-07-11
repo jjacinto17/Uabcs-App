@@ -30,7 +30,9 @@ export default function App() {
         <Stack.Screen
           name="SemesterScreen"
           component={SemesterScreen}
-          options={{ title: "Semestre" }}
+          options={{
+            headerShown: false,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

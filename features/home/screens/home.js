@@ -1,16 +1,15 @@
 import { TextContainerNotification } from "../components/textNotificationCont"
 import { TextContainerInformation } from "../components/textInformationCont"
+import  CalendarComponent  from "../components/calendarComponent"
 import { LegendView } from '../components/kardexLeyends';
 import { Card } from '../components/kardexCard';
 import { StyleSheet } from "react-native";
 import { View, Text } from "react-native";
 import { MapScreen } from "../components/mapComponent"
-import { Image } from "react-native";
 
 export function NotificationsScreen() {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}></Text>
             <TextContainerNotification />
             <TextContainerNotification />
             <TextContainerNotification />
@@ -21,7 +20,6 @@ export function NotificationsScreen() {
 export function InfoScreen() {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}></Text>
             <TextContainerInformation />
         </View>
     );
@@ -30,20 +28,13 @@ export function InfoScreen() {
 export function CalendarScreen() {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}></Text>
-            <Image
-                source={require('../../../assets/logo_uabcs.png')}
-                style={styles.logo}
-                resizeMode="stretch"
-
-            />
+            <CalendarComponent />
         </View>
     );
 }
 export function UniMapScreen() {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}></Text>
             <MapScreen />
         </View>
     );
@@ -63,12 +54,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#fff',
 
-    },
-    text: {
-        fontSize: 20,
-        fontWeight: 'bold',
     },
 });
 

@@ -23,6 +23,7 @@ export const TextContainerNotification = () => {
 
 const styles = StyleSheet.create({
     container: {
+        marginVertical: '5%',
         flexDirection: 'row',
         width: '90%',
         backgroundColor: '#0C1A61',
