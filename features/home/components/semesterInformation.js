@@ -1,9 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('window');
 
 export const SemesterScreen = ({ route }) => {
+    const navigation = useNavigation();
     const { subject } = route.params;
 
     const subjectsData = [
@@ -53,15 +56,17 @@ export const SemesterScreen = ({ route }) => {
         <ScrollView style={styles.scrollView}>
             <View style={styles.container}>
                 <View style={styles.header}>
+                <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+                <Ionicons name="chevron-back" size={30} color="white" />
+            </TouchableOpacity>
                     <Text style={styles.headerTitle}>{subject}</Text>
                 </View>
                 {subjectsData.map((subject, index) => (
                     <View key={index} style={styles.subjectContainer}>
                         <View style={styles.matter}>
-                            <Text style={styles.title}>Materia</Text>
+                            <Text style={styles.title}>{subject.subjectName}</Text>
                         </View>
                         <View style={styles.containerMatter2}>
-                            <Text style={styles.subjectName}>{subject.subjectName}</Text>
                             <Text>{`Período: ${subject.period}`}</Text>
                             <Text>{`Tipo de cursado: ${subject.type}`}</Text>
                             <Text>{`Grupo: ${subject.group}`}</Text>
@@ -83,16 +88,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     header: {
-        backgroundColor: '#2139B5',
+        backgroundColor: '#0C1A61',
         width: '100%',
-        paddingVertical: height * 0.02,
         marginBottom: height * 0.02,
         justifyContent: 'center',
         alignItems: 'left',
+        paddingLeft: width * 0.15,
+        paddingVertical: width * 0.9,
+        paddingTop: height * 0.03,
+        paddingBottom: height * 0.01,
     },
     headerTitle: {
         color: '#fff',
-        fontSize: width * 0.055,
+        fontSize: width * 0.06,
         fontWeight: 'bold',
     },
     subjectContainer: {
@@ -123,17 +131,23 @@ const styles = StyleSheet.create({
     title: {
         color: '#fff',
         marginHorizontal: width * 0.04,
-        fontSize: width * 0.050,
+        fontSize: width * 0.05,
         fontWeight: 'bold',
     },
     subjectName: {
         fontWeight: 'bold',
-        fontSize: width * 0.040,
+        fontSize: width * 0.04,
         marginBottom: height * 0.001,
     },
     scrollView: {
         flex: 1,
         width: "100%",
+    },
+    backButton: {
+        position: 'absolute',
+        top: height * 0.032,
+        left: width * 0.05,
+        zIndex: 1,
     },
 });
 

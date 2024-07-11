@@ -23,13 +23,13 @@ export const TextContainerNotification = () => {
 
 const styles = StyleSheet.create({
     container: {
-        marginVertical: '5%',
+        marginVertical: '3%',
         flexDirection: 'row',
         width: '90%',
         backgroundColor: '#0C1A61',
         borderRadius: 21,
         padding: 10,
-        marginBottom: height * 0.03,
+        marginBottom: height * 0.01,
         alignItems: 'center',
     },
     image: {
