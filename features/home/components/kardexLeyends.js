@@ -1,10 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet, Animated } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
+
+const { width, height } = Dimensions.get('window');
 
 export const LegendView = () => {
   return (
     <View style={styles.container}>
       <View style={styles.legendContainer}>
+      <View style={styles.legend}>
+          <Text style={styles.legendText}>Aprobadas</Text>
+          <View style={[styles.circle, styles.approved]}>
+            <Text style={styles.number}>15</Text>
+          </View>
+        </View>
         <View style={styles.legend}>
           <Text style={styles.legendText}>No Aprobadas</Text>
           <View style={[styles.circle, styles.notApproved]}>
@@ -17,12 +25,6 @@ export const LegendView = () => {
             <Text style={styles.number}>10</Text>
           </View>
         </View>
-        <View style={styles.legend}>
-          <Text style={styles.legendText}>Aprobadas</Text>
-          <View style={[styles.circle, styles.approved]}>
-            <Text style={styles.number}>15</Text>
-          </View>
-        </View>
       </View>
     </View>
   );
@@ -30,34 +32,29 @@ export const LegendView = () => {
 
 const styles = StyleSheet.create({
   container: {
-    top: "1%",
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingRight: "10%",
     backgroundColor: '#f0f0f0',
-    height: "10%"
-
+    paddingVertical: height * 0.02,
+    width: '100%',
   },
-
   legendContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    width: '100%',
-    borderColor: "#0C1A61",
-
+    width: '90%',
   },
   legend: {
     alignItems: 'center',
   },
   legendText: {
-    fontSize: 16,
+    fontSize: width * 0.04,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: height * 0.01,
   },
   circle: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: width * 0.12,
+    height: width * 0.12,
+    borderRadius: (width * 0.12) / 2,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -72,7 +69,9 @@ const styles = StyleSheet.create({
   },
   number: {
     color: '#FFFFFF',
-    fontSize: 18,
+    fontSize: width * 0.05,
     fontWeight: 'bold',
   },
 });
+
+export default LegendView;

@@ -1,4 +1,5 @@
-import { TextContainer } from "../components/textNotificationCont"
+import { TextContainerNotification } from "../components/textNotificationCont"
+import { TextContainerInformation } from "../components/textInformationCont"
 import { LegendView } from '../components/kardexLeyends';
 import { Card } from '../components/kardexCard';
 import { StyleSheet } from "react-native";
@@ -9,10 +10,10 @@ import { Image } from "react-native";
 export function NotificationsScreen() {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Notificaciones</Text>
-            <TextContainer />
-            <TextContainer />
-            <TextContainer />
+            <Text style={styles.text}></Text>
+            <TextContainerNotification />
+            <TextContainerNotification />
+            <TextContainerNotification />
         </View>
     );
 }
@@ -20,8 +21,8 @@ export function NotificationsScreen() {
 export function InfoScreen() {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>infos</Text>
-            <TextContainer />
+            <Text style={styles.text}></Text>
+            <TextContainerInformation />
         </View>
     );
 }
@@ -29,7 +30,7 @@ export function InfoScreen() {
 export function CalendarScreen() {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>calendario</Text>
+            <Text style={styles.text}></Text>
             <Image
                 source={require('../../../assets/logo_uabcs.png')}
                 style={styles.logo}
@@ -42,7 +43,7 @@ export function CalendarScreen() {
 export function UniMapScreen() {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>mapas</Text>
+            <Text style={styles.text}></Text>
             <MapScreen />
         </View>
     );
@@ -51,12 +52,11 @@ export function UniMapScreen() {
 export function KardexScreen() {
     return (
         <View style={styles.container}>
-            <LegendView />
+            <LegendView/>
             <Card />
         </View>
     );
 }
-
 
 const styles = StyleSheet.create({
     container: {

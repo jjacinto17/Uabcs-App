@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
-export const TextContainerNotification = () => {
+export const TextContainerInformation = () => {
     return (
         <View style={styles.container}>
             <Image
@@ -12,7 +12,7 @@ export const TextContainerNotification = () => {
             />
             <View style={styles.textContainer}>
                 <Text style={styles.date}>12/06/2024</Text>
-                <Text style={styles.title}>Texto Notificacion</Text>
+                <Text style={styles.title}>Texto Informacion </Text>
                 <Text style={styles.description}>
                     Esta es una descripción más detallada. Este es un texto adicional para demostrar cómo se comporta cuando hay mucho texto.
                 </Text>
@@ -63,4 +63,5 @@ const styles = StyleSheet.create({
     },
 });
 
-export default TextContainerNotification;
+export default TextContainerInformation;
+
