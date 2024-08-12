@@ -4,104 +4,67 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  Modal,
   TouchableOpacity,
-  Dimensions,
 } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-
-const { width, height } = Dimensions.get("window");
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const GradeCard = ({ semester, subject, teacher, grade }) => {
-  const [modalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation(); 
 
   const handleSemesterPress = () => {
     navigation.navigate("SemesterScreen", { subject });
   };
 
-  /*const closeModal = () => setModalVisible(false);
-
-    <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={closeModal}
-            >
-                <View style={styles.modalBackground}>
-                    <View style={styles.modalContent}>
-                        <View style={styles.leftContent}>
-                            <Text style={styles.modalTitle}>{subject}</Text>
-                            <Text style={styles.modalDescription}>Descripción de la materia...</Text>
-                        </View>
-                        <View style={styles.rightContent}>
-                            <View style={[styles.gradeCircle, { backgroundColor: getGradeColor(grade) }]}>
-                                <Text style={styles.gradeText}>{grade}</Text>
-                            </View>
-                        </View>
-                    </View>
-                    <TouchableOpacity onPress={closeModal} style={styles.closeButton}>
-                        <Text style={styles.closeButtonText}>Cerrar</Text>
-                    </TouchableOpacity>
-                </View>
-            </Modal>*/
-
   return (
-    <>
-      <TouchableOpacity onPress={handleSemesterPress}>
-        <View style={styles.card}>
-          <View style={styles.leftContainer}>
-            <Text style={styles.semester}>{semester}</Text>
-          </View>
-          <View style={styles.centerContainer}>
-            <Text style={styles.subject}>{subject}</Text>
-            <Text style={styles.teacher}>{teacher}</Text>
-          </View>
-          <View style={styles.rightContainer}>
-            <View
-              style={[
-                styles.gradeCircle,
-                { backgroundColor: getGradeColor(grade) },
-              ]}
-            >
-              <Text style={styles.grade}>{grade}</Text>
-            </View>
+    <TouchableOpacity onPress={handleSemesterPress}>
+      <View style={styles.card}>
+        <View style={styles.leftContainer}>
+          <Text style={styles.semester}>{semester}</Text>
+        </View>
+        <View style={styles.centerContainer}>
+          <Text style={styles.subject}>{subject}</Text>
+          <Text style={styles.teacher}>{teacher}</Text>
+        </View>
+        <View style={styles.rightContainer}>
+          <View style={[styles.gradeCircle, { backgroundColor: getGradeColor(grade) }]}>
+            <Text style={styles.grade}>{grade}</Text>
           </View>
         </View>
-      </TouchableOpacity>
-    </>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 const getGradeColor = (grade) => {
   const numericGrade = parseFloat(grade);
   if (numericGrade === 100) {
-    return "#27ae60"; // Verde
+    return "#27ae60"; 
   } else if (numericGrade >= 90.0) {
-    return "#2ecc71"; // Verde claro
+    return "#2ecc71"; 
   } else if (numericGrade >= 70.0) {
-    return "#f1c40f"; // Amarillo
+    return "#f1c40f"; 
   } else if (numericGrade >= 60.0) {
-    return "#e67e22"; // Naranja
+    return "#e67e22"; 
   } else {
-    return "#e74c3c"; // Rojo
+    return "#e74c3c";
   }
 };
 
 export const Card = () => {
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.scrollView}>
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <GradeCard semester="1" subject="Primer Semestre" grade="80.5" />
         <GradeCard semester="2" subject="Segundo Semestre" grade="100" />
         <GradeCard semester="3" subject="Tercer Semestre" grade="50.5" />
         <GradeCard semester="4" subject="Cuarto Semestre" grade="80.0" />
         <GradeCard semester="5" subject="Quinto Semestre" grade="90.5" />
         <GradeCard semester="6" subject="Sexto Semestre" grade="70.0" />
-        <GradeCard semester="7" subject="Septimo Semestre" grade="80.8" />
+        <GradeCard semester="7" subject="Séptimo Semestre" grade="80.8" />
         <GradeCard semester="8" subject="Octavo Semestre" grade="60.1" />
         <GradeCard semester="9" subject="Noveno Semestre" grade="80.7" />
-        <GradeCard semester="10" subject="Decimo Semestre" grade="70.9" />
+        <GradeCard semester="10" subject="Décimo Semestre" grade="70.9" />
       </ScrollView>
     </View>
   );
@@ -110,12 +73,12 @@ export const Card = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f0f0f0",
-    paddingHorizontal: width * 0.009,
-  },
-  scrollView: {
-    flex: 1,
+    backgroundColor: "#fff",
     width: "100%",
+    paddingHorizontal: wp('2%'),
+  },
+  scrollViewContent: {
+    paddingBottom: hp('2%'),
   },
   card: {
     flexDirection: "row",
@@ -123,36 +86,35 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "rgb(222,222,222)",
     borderRadius: 21,
-    padding: width * 0.04,
-    marginBottom: height * 0.015,
+    padding: wp('4%'),
+    marginBottom: hp('1.5%'),
   },
   leftContainer: {
-    marginHorizontal: width * 0.04,
     width: "15%",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "rgb(42,128,207)",
     borderRadius: 10,
-    padding: width * 0.025,
-    marginRight: width * 0.025,
+    padding: wp('2.5%'),
+    marginRight: wp('2.5%'),
   },
   semester: {
-    fontSize: width * 0.05,
+    fontSize: wp('5%'),
     fontWeight: "bold",
     color: "#fff",
   },
   centerContainer: {
     width: "55%",
-    paddingLeft: width * 0.04,
+    paddingLeft: wp('4%'),
   },
   subject: {
-    fontSize: width * 0.045,
+    fontSize: wp('4.5%'),
     fontWeight: "bold",
     textAlign: "left",
     color: "rgb(23,26,32)",
   },
   teacher: {
-    fontSize: width * 0.04,
+    fontSize: wp('4%'),
     color: "rgb(23,26,32)",
   },
   rightContainer: {
@@ -161,65 +123,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   gradeCircle: {
-    width: width * 0.125,
-    height: width * 0.125,
-    borderRadius: (width * 0.125) / 2,
+    width: wp('12.5%'),
+    height: wp('12.5%'),
+    borderRadius: wp('6.25%'),
     justifyContent: "center",
     alignItems: "center",
   },
   grade: {
-    fontSize: width * 0.045,
+    fontSize: wp('4.5%'),
     fontWeight: "bold",
     color: "#fff",
   },
-  modalBackground: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-  modalContent: {
-    backgroundColor: "#fff",
-    padding: height * 0.03,
-    borderRadius: 10,
-    width: "80%",
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  leftContent: {
-    flex: 1,
-    paddingRight: width * 0.05,
-  },
-  rightContent: {
-    justifyContent: "flex-start",
-    alignItems: "flex-end",
-  },
-  modalTitle: {
-    fontSize: width * 0.06,
-    fontWeight: "bold",
-    marginBottom: height * 0.01,
-  },
-  modalDescription: {
-    fontSize: width * 0.045,
-    marginBottom: height * 0.01,
-    color: "#333",
-  },
-  gradeText: {
-    fontSize: width * 0.045,
-    fontWeight: "bold",
-    color: "#FFFFFF",
-  },
   closeButton: {
     alignSelf: "center",
-    marginTop: height * 0.02,
-    paddingVertical: height * 0.015,
-    paddingHorizontal: width * 0.1,
+    marginTop: hp('2%'),
+    paddingVertical: hp('1.5%'),
+    paddingHorizontal: wp('10%'),
     backgroundColor: "#0C1A61",
     borderRadius: 10,
   },
   closeButtonText: {
     color: "#fff",
-    fontSize: width * 0.045,
+    fontSize: wp('4.5%'),
     fontWeight: "bold",
   },
 });
+
+export default Card;

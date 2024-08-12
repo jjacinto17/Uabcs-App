@@ -1,17 +1,16 @@
 import React from "react";
-import { View, Image, StyleSheet, Dimensions, ScrollView } from "react-native";
-
-const { width, height } = Dimensions.get("window");
+import { View, Image, StyleSheet, ScrollView } from "react-native";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export const CalendarScreen = () => {
   return (
     <View style={styles.container}>
-        <ScrollView style={styles.scrollView}>
-      <Image
-        source={require('../../../assets/calendario.png')}
-        style={styles.image}
-        resizeMode="contain"
-      />
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        <Image
+          source={require('../../../assets/calendario.png')}
+          style={styles.image}
+          resizeMode="cover" 
+        />
       </ScrollView>
     </View>
   );
@@ -19,14 +18,17 @@ export const CalendarScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
   },
+  scrollViewContent: {
+    flexGrow: 1,
+  },
   image: {
-    width: width * 10,
-    height: width * 2.45,
-    borderRadius: 10,
+    width: wp('100%'),
+    height: hp('100%'),
   },
   scrollView: {
     width: "100%",

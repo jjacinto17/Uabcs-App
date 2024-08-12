@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-
-const { width, height } = Dimensions.get('window');
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export const SemesterScreen = ({ route }) => {
     const navigation = useNavigation();
@@ -56,9 +55,9 @@ export const SemesterScreen = ({ route }) => {
         <ScrollView style={styles.scrollView}>
             <View style={styles.container}>
                 <View style={styles.header}>
-                <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-                <Ionicons name="chevron-back" size={30} color="white" />
-            </TouchableOpacity>
+                    <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+                        <Ionicons name="chevron-back" size={30} color="white" />
+                    </TouchableOpacity>
                     <Text style={styles.headerTitle}>{subject}</Text>
                 </View>
                 {subjectsData.map((subject, index) => (
@@ -84,29 +83,25 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#f0f0f0",
-        justifyContent: 'center',
         alignItems: 'center',
     },
     header: {
         backgroundColor: '#0C1A61',
         width: '100%',
-        marginBottom: height * 0.02,
+        marginBottom: hp('2%'),
         justifyContent: 'center',
-        alignItems: 'left',
-        paddingLeft: width * 0.15,
-        paddingVertical: width * 0.9,
-        paddingTop: height * 0.03,
-        paddingBottom: height * 0.01,
+        alignItems: 'center',
+        paddingVertical: hp('3%'),
     },
     headerTitle: {
         color: '#fff',
-        fontSize: width * 0.06,
+        fontSize: wp('6%'),
         fontWeight: 'bold',
     },
     subjectContainer: {
         backgroundColor: '#fff',
         borderRadius: 10,
-        marginBottom: height * 0.02,
+        marginBottom: hp('2%'),
         width: '90%',
         shadowColor: '#000',
         shadowOffset: {
@@ -118,26 +113,21 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     containerMatter2: {
-        paddingVertical: width * 0.02,
-        marginHorizontal: width * 0.04,
+        paddingVertical: hp('2%'),
+        paddingHorizontal: wp('4%'),
     },
     matter: {
         backgroundColor: '#2139B5',
         width: '100%',
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
-        paddingVertical: height * 0.01,
+        paddingVertical: hp('1%'),
     },
     title: {
         color: '#fff',
-        marginHorizontal: width * 0.04,
-        fontSize: width * 0.05,
+        paddingHorizontal: wp('4%'),
+        fontSize: wp('5%'),
         fontWeight: 'bold',
-    },
-    subjectName: {
-        fontWeight: 'bold',
-        fontSize: width * 0.04,
-        marginBottom: height * 0.001,
     },
     scrollView: {
         flex: 1,
@@ -145,8 +135,8 @@ const styles = StyleSheet.create({
     },
     backButton: {
         position: 'absolute',
-        top: height * 0.032,
-        left: width * 0.05,
+        top: hp('3.2%'),
+        left: wp('5%'),
         zIndex: 1,
     },
 });

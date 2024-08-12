@@ -1,13 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
-
-const { width, height } = Dimensions.get('window');
+import { View, Text, StyleSheet } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export const LegendView = () => {
   return (
     <View style={styles.container}>
       <View style={styles.legendContainer}>
-      <View style={styles.legend}>
+        <View style={styles.legend}>
           <Text style={styles.legendText}>Aprobadas</Text>
           <View style={[styles.circle, styles.approved]}>
             <Text style={styles.number}>15</Text>
@@ -34,8 +33,8 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
-    paddingVertical: height * 0.02,
+    backgroundColor: '#fff',
+    paddingVertical: hp('2%'),
     width: '100%',
   },
   legendContainer: {
@@ -47,14 +46,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   legendText: {
-    fontSize: width * 0.04,
+    fontSize: wp('4%'),
     fontWeight: 'bold',
-    marginBottom: height * 0.01,
+    marginBottom: hp('1%'),
   },
   circle: {
-    width: width * 0.12,
-    height: width * 0.12,
-    borderRadius: (width * 0.12) / 2,
+    width: wp('12%'),
+    height: wp('12%'),
+    borderRadius: wp('6%'),
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
   },
   number: {
     color: '#FFFFFF',
-    fontSize: width * 0.05,
+    fontSize: wp('5%'),
     fontWeight: 'bold',
   },
 });
