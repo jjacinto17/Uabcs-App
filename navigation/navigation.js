@@ -18,7 +18,7 @@ export function HomeScreen() {
                 tabBarIcon: ({ color, size }) => {
                     let iconName;
                     switch (route.name) {
-                        case 'Notificaciones':
+                        case 'Notificacion':
                             iconName = 'bell';
                             break;
                         case 'Informacion':
@@ -37,6 +37,7 @@ export function HomeScreen() {
 
                     return <Icon name={iconName} color={color} size={width * 0.065} />; 
                 },
+                
                 headerTitleContainerStyle: {
                     justifyContent: 'center',
                 },
@@ -61,7 +62,7 @@ export function HomeScreen() {
             })}
         >
             <Tab.Screen
-                name="Notificaciones"
+                name="Notificacion"
                 component={NotificationsScreen}
             />
             <Tab.Screen

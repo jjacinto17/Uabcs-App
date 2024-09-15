@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { signIn } from "../../../api";
+import * as SecureStorage from 'expo-secure-store'
+
 import {
   Text,
   View,
@@ -17,11 +20,16 @@ export function LoginScreen({ navigation }) {
   const [passwordFocused, setPasswordFocused] = useState(false);
   const [identifierText, setIdentifierText] = useState("");
   const [passwordText, setPasswordText] = useState("");
-
+  
   const handleIdentifierFocus = () => {
+    
     setIdentifierFocused(true);
     setPasswordFocused(false);
   };
+  
+  const saveToken = (token)=>{
+    SecureStorage.setItemAsync(token.acces_token)
+  }
 
   const handlePasswordFocus = () => {
     setPasswordFocused(true);
@@ -64,7 +72,7 @@ export function LoginScreen({ navigation }) {
           value={passwordText}
         />
 
-        <Text style={styles.forgotPassword} onPress={() => {}}>
+        <Text style={styles.forgotPassword} onPress={() => { }}>
           ¿Has olvidado la contraseña o usuario de SIIA UABCS?
         </Text>
       </View>
@@ -72,7 +80,9 @@ export function LoginScreen({ navigation }) {
       <Pressable
         style={styles.sendBtn}
         onPress={() => {
-          navigation.navigate("HomeScreen");
+          const tokenObj = signIn(identifierText,passwordText)
+          saveToken(tokenObj)
+          console.log(passwordText,identifierText)
         }}
       >
         <Text style={styles.btnText}>Iniciar sesión</Text>
@@ -125,14 +135,14 @@ const styles = StyleSheet.create({
   sendBtn: {
     width: "90%",
     height: height * 0.065,
-    backgroundColor: "#CFC01D", 
+    backgroundColor: "#CFC01D",
     borderRadius: 15,
     justifyContent: "center",
     alignItems: "center",
     marginTop: height * 0.08,
   },
   btnText: {
-    color: "#0C1A61", 
+    color: "#0C1A61",
     fontSize: width * 0.05,
   },
 });

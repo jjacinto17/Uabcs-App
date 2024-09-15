@@ -14,10 +14,10 @@ const { width, height } = Dimensions.get("window");
 
 const GradeCard = ({ semester, subject, teacher, grade }) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
 
   const handleSemesterPress = () => {
-    navigation.navigate("SemesterScreen", { subject });
+    navigation.navigate("SemesterScreen", { semester });
   };
 
   /*const closeModal = () => setModalVisible(false);
@@ -61,7 +61,7 @@ const GradeCard = ({ semester, subject, teacher, grade }) => {
             <View
               style={[
                 styles.gradeCircle,
-                { backgroundColor: getGradeColor(grade) },
+                { backgroundColor: getGradeColor(grade)},
               ]}
             >
               <Text style={styles.grade}>{grade}</Text>
@@ -73,7 +73,7 @@ const GradeCard = ({ semester, subject, teacher, grade }) => {
   );
 };
 
-const getGradeColor = (grade) => {
+export const getGradeColor = (grade) => {
   const numericGrade = parseFloat(grade);
   if (numericGrade === 100) {
     return "#27ae60"; // Verde

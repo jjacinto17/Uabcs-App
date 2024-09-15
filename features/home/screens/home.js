@@ -43,7 +43,7 @@ export function UniMapScreen() {
 export function KardexScreen() {
     return (
         <View style={styles.container}>
-            <LegendView/>
+            <LegendView grade={100}/>
             <Card />
         </View>
     );

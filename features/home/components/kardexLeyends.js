@@ -1,9 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { getGradeColor } from './kardexCard';
 
 const { width, height } = Dimensions.get('window');
 
-export const LegendView = () => {
+
+
+export const LegendView = ({grade}) => {
   return (
     <View style={styles.container}>
       <View style={styles.legendContainer}>
@@ -21,8 +24,8 @@ export const LegendView = () => {
         </View>
         <View style={styles.legend}>
           <Text style={styles.legendText}>General</Text>
-          <View style={[styles.circle, styles.general]}>
-            <Text style={styles.number}>80.6</Text>
+          <View style={[styles.circle,{backgroundColor:getGradeColor(grade)}]}>
+            <Text style={styles.number}>{grade}</Text>
           </View>
         </View>
       </View>
@@ -61,9 +64,7 @@ const styles = StyleSheet.create({
   notApproved: {
     backgroundColor: '#FF0000',
   },
-  general: {
-    backgroundColor: '#100000',
-  },
+  
   approved: {
     backgroundColor: 'rgb(19,133,53)',
   },

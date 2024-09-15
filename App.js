@@ -30,9 +30,14 @@ export default function App() {
         <Stack.Screen
           name="SemesterScreen"
           component={SemesterScreen}
-          options={{
-            headerShown: false,
-          }}
+          options={
+            { title: "Semestre",
+              headerStyle:{
+                backgroundColor:"#0C1A61",              
+              },headerTintColor:"#ffff"
+
+            }}
+          
         />
       </Stack.Navigator>
     </NavigationContainer>

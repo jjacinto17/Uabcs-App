@@ -1,99 +1,81 @@
-import React from 'react';
-import { View, Text, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, Dimensions, ScrollView, FlatList, } from 'react-native';
+import { getData } from '../../../api';
 
 const { width, height } = Dimensions.get('window');
 
 export const SemesterScreen = ({ route }) => {
-    const { subject } = route.params;
 
-    const subjectsData = [
-        {
-            subjectName: 'Matemáticas',
-            period: '2020/II',
-            type: 'Ordinario Normal',
-            group: 'Grupo A',
-            turn: 'Vespertino',
-            professor: 'Juan Pérez'
-        },
-        {
-            subjectName: 'Física',
-            period: '2020/II',
-            type: 'Extraordinario',
-            group: 'Grupo A',
-            turn: 'Vespertino',
-            professor: 'María García'
-        },
-        {
-            subjectName: 'Programación',
-            period: '2020/II',
-            type: 'Ordinario Normal',
-            group: 'Grupo A',
-            turn: 'Vespertino',
-            professor: 'Luis Martínez'
-        },
-        {
-            subjectName: 'Inglés',
-            period: '2020/II',
-            type: 'Recursamiento',
-            group: 'Grupo A',
-            turn: 'Vespertino',
-            professor: 'Ana Ramírez'
-        },
-        {
-            subjectName: 'Historia',
-            period: '2020/II',
-            type: 'Ordinario Normal',
-            group: 'Grupo A',
-            turn: 'Vespertino',
-            profesor: 'Pedro Rodríguez'
-        }
-    ];
+    //const { semester } = route.params;
+
+    const [data, setData] = useState([])
+    const loadInfo = async () => {
+        const info = await getData()
+        setData([info])
+        console.log(typeof (data))
+    }
+    useEffect(() => {
+        loadInfo()
+    }, [])
+
+    const Item = ({ profe, materia, cali }) => (
+        <View style={styles.item}>
+            <Text style={styles.title}>{cali}</Text>
+            <Text style={styles.title}>{materia}</Text>
+            <Text style={styles.title}>{profe}</Text>
+        </View>
+    );
+
+    const ContainerMat = ({ profe, materia, cali }) => {
+        return (
+            <View style={styles.subjectContainer}>
+
+                <View style={styles.matter}>
+                    <Text style={styles.title}>materia</Text>
+                </View>
+                <View style={styles.containerMatter2}>
+                    <Text style={styles.subjectName}>{materia}</Text>
+                    <Text>{`Calificacio:${cali}`}</Text>
+                    <Text>{`Tipo de cursado: edede`}</Text>
+                    <Text>{`Grupo y turno:dedede`}</Text>
+                    <Text>{`Profesor: ${profe}`}</Text>
+                </View>
+            </View>
+        )
+    }
 
     return (
-        <ScrollView style={styles.scrollView}>
-            <View style={styles.container}>
-                <View style={styles.header}>
-                    <Text style={styles.headerTitle}>{subject}</Text>
-                </View>
-                {subjectsData.map((subject, index) => (
-                    <View key={index} style={styles.subjectContainer}>
-                        <View style={styles.matter}>
-                            <Text style={styles.title}>Materia</Text>
-                        </View>
-                        <View style={styles.containerMatter2}>
-                            <Text style={styles.subjectName}>{subject.subjectName}</Text>
-                            <Text>{`Período: ${subject.period}`}</Text>
-                            <Text>{`Tipo de cursado: ${subject.type}`}</Text>
-                            <Text>{`Grupo: ${subject.group}`}</Text>
-                            <Text>{`Turno: ${subject.turn}`}</Text>
-                            <Text>{`Profesor: ${subject.professor}`}</Text>
-                        </View>
-                    </View>
-                ))}
-            </View>
-        </ScrollView>
+        <View style={styles.container}>
+            <FlatList
+                data={data}
+                renderItem={({ item }) => (
+                    <ContainerMat
+                        materia={item.materia}
+                        profe={item.profesor}
+                        cali={item.calificacion}
+                    >
+                    </ContainerMat>
+                )}
+            >
+            </FlatList>            
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
+        marginTop: height * 0.02,
         flex: 1,
-        backgroundColor: "#f0f0f0",
+        paddingHorizontal: width * 0.009,
         justifyContent: 'center',
         alignItems: 'center',
+
     },
-    header: {
-        backgroundColor: '#2139B5',
-        width: '100%',
-        paddingVertical: height * 0.02,
-        marginBottom: height * 0.02,
-        justifyContent: 'center',
-        alignItems: 'left',
-    },
-    headerTitle: {
-        color: '#fff',
-        fontSize: width * 0.055,
-        fontWeight: 'bold',
+    item: {
+        backgroundColor: '#f9c2ff',
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16,
     },
     subjectContainer: {
         backgroundColor: '#fff',
@@ -116,25 +98,21 @@ const styles = StyleSheet.create({
     matter: {
         backgroundColor: '#2139B5',
         width: '100%',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-        paddingVertical: height * 0.01,
+        borderRadius: 10,
+
     },
     title: {
         color: '#fff',
         marginHorizontal: width * 0.04,
         fontSize: width * 0.050,
         fontWeight: 'bold',
+        marginBottom: height * 0.01,
     },
     subjectName: {
+
         fontWeight: 'bold',
         fontSize: width * 0.040,
         marginBottom: height * 0.001,
     },
-    scrollView: {
-        flex: 1,
-        width: "100%",
-    },
 });
-
 export default SemesterScreen;
