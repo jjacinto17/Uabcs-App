@@ -7,9 +7,9 @@ export const CalendarScreen = () => {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <Image
-          source={require('../../../assets/calendario.png')}
+          source={require('../../../assets/calendario2.png')}
           style={styles.image}
-          resizeMode="cover" 
+          resizeMode="stretch" 
         />
       </ScrollView>
     </View>

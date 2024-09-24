@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
   },
   legendContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '90%',
+    justifyContent: "space-evenly",
+    width: '100%',
   },
   legend: {
     alignItems: 'center',

@@ -6,11 +6,12 @@ import {
   TextInput,
   Pressable,
   Image,
-  Dimensions,
   ScrollView,
 } from "react-native";
-
-const { width, height } = Dimensions.get("window");
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 
 export function LoginScreen({ navigation }) {
   const [identifierFocused, setIdentifierFocused] = useState(false);
@@ -87,27 +88,27 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#0C1A61",
-    paddingVertical: height * 0.01,
-    paddingHorizontal: width * 0.01,
+    paddingVertical: hp("1%"),
+    paddingHorizontal: wp("2%"),
   },
   imageContainer: {
-    marginBottom: height * 0.05,
+    marginBottom: hp("5%"),
   },
   logo: {
-    width: width * 0.5,
-    height: width * 0.5,
+    width: wp("50%"),
+    height: wp("50%"),
   },
   inputContainer: {
     alignItems: "center",
     width: "100%",
-    marginBottom: height * 0.05,
+    marginBottom: hp("5%"),
   },
   input: {
-    height: height * 0.06,
+    height: hp("6%"),
     width: "80%",
-    paddingHorizontal: width * 0.01,
-    fontSize: width * 0.045,
-    marginBottom: height * 0.04,
+    paddingHorizontal: wp("2%"),
+    fontSize: wp("4.5%"),
+    marginBottom: hp("4%"),
     textAlign: "left",
     borderBottomWidth: 2,
     borderBottomColor: "#fff",
@@ -117,23 +118,23 @@ const styles = StyleSheet.create({
     borderBottomColor: "#046DC9",
   },
   forgotPassword: {
-    fontSize: width * 0.035,
+    fontSize: wp("3.5%"),
     color: "#fff",
-    marginBottom: height * 0.05,
+    marginBottom: hp("5%"),
     textDecorationLine: "underline",
   },
   sendBtn: {
     width: "90%",
-    height: height * 0.065,
-    backgroundColor: "#CFC01D", 
+    height: hp("6.5%"),
+    backgroundColor: "#CFC01D",
     borderRadius: 15,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: height * 0.08,
+    marginTop: hp("8%"),
   },
   btnText: {
-    color: "#0C1A61", 
-    fontSize: width * 0.05,
+    color: "#0C1A61",
+    fontSize: wp("5%"),
   },
 });
 

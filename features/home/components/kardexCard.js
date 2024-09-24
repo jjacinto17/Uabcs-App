@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
     width: "20%",
     justifyContent: "flex-end",
     alignItems: "center",
+    paddingLeft: wp('8%'),
   },
   gradeCircle: {
     width: wp('12.5%'),
